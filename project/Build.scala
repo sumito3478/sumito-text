@@ -15,7 +15,8 @@ object SumitoTextBuild extends Build {
       libraryDependencies ++= Seq(
         "org.specs2" %% "specs2" % "1.12.3" % "test", 
         "org.mockito" % "mockito-core" % "1.9.5" % "test", 
-        "junit" % "junit" % "4.11" % "test"
+        "junit" % "junit" % "4.11" % "test",
+        "com.ibm.icu" % "icu4j" % "50.1"
       )
     ): _*
   )

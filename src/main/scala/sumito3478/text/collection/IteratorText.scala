@@ -16,6 +16,9 @@ import sumito3478.text.Word
 import sumito3478.text.collection.immutable.StringText
 
 trait IteratorText extends Iterator[Char] {
+  def readString: String = {
+    throw new NotImplementedError
+  }
 
 }
 

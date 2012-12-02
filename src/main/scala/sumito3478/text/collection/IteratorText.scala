@@ -98,7 +98,11 @@ trait IteratorText extends Iterator[Char] {
 
 object IteratorText {
   implicit def apply(it: Iterator[Char]): IteratorText = {
-    throw new NotImplementedError
+    new IteratorText {
+      def hasNext = it.hasNext
+
+      def next = it.next
+    }
   }
 
   lazy val DefaultGraphemeBreakIterator: ThreadLocal[BreakIterator] = {

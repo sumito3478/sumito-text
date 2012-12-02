@@ -17,11 +17,37 @@ import sumito3478.text.collection.immutable.StringText
 
 trait IteratorText extends Iterator[Char] {
   def readString: String = {
+  def codePointIterator: Iterator[Int] = {
+    throw new NotImplementedError
+  }
+  def graphemeIterator: Iterator[Grapheme] = {
+    throw new NotImplementedError
+  }
+  def wordIterator: Iterator[Word] = {
     throw new NotImplementedError
   }
 
+  /**
+   * Not implemented yet.
+   */
+  def lineIterator: Iterator[Line] = {
+    throw new NotImplementedError
+  }
+
+  /**
+   * Not implemented yet.
+   */
+  def sentenceIterator: Iterator[Sentence] = {
+    throw new NotImplementedError
+  }
 }
 
 object IteratorText {
+  implicit def apply(it: Iterator[Char]): IteratorText = {
+    throw new NotImplementedError
+  }
 
+  lazy val DefaultGraphemeBreakIterator: ThreadLocal[BreakIterator] = {
+    throw new NotImplementedError
+  }
 }

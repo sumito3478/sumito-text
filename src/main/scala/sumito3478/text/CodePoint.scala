@@ -20,4 +20,8 @@ object CodePoint {
   def isSurrogatePair(high: Char, low: Char): Boolean = {
     Character.isSurrogatePair(high, low)
   }
+
+  def apply(high: Char, low: Char): CodePoint = {
+    Character.toCodePoint(high, low)
+  }
 }

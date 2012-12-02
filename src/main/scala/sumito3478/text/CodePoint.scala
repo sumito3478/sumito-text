@@ -13,4 +13,7 @@ object CodePoint {
     new CodePoint(value)
   }
 
+  implicit def toInt(codePoint: CodePoint): Int = {
+    codePoint.value
+  }
 }

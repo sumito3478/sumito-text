@@ -110,6 +110,9 @@ object IteratorText {
   }
 
   lazy val DefaultGraphemeBreakIterator: ThreadLocal[BreakIterator] = {
-    throw new NotImplementedError
+    ThreadLocal[BreakIterator] {
+      () =>
+        BreakIterator.getCharacterInstance(ULocale.ENGLISH)
+    }
   }
 }

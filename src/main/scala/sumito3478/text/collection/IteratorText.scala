@@ -17,6 +17,10 @@ import sumito3478.text.collection.immutable.StringText
 
 trait IteratorText extends Iterator[Char] {
   def readString: String = {
+    val builder = new StringBuilder
+    builder ++= this
+    builder.result
+  }
   def codePointIterator: Iterator[Int] = {
     throw new NotImplementedError
   }

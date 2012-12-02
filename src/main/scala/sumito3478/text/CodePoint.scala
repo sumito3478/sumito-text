@@ -16,4 +16,8 @@ object CodePoint {
   implicit def toInt(codePoint: CodePoint): Int = {
     codePoint.value
   }
+
+  def isSurrogatePair(high: Char, low: Char): Boolean = {
+    Character.isSurrogatePair(high, low)
+  }
 }

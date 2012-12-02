@@ -48,8 +48,34 @@ trait IteratorText extends Iterator[Char] {
         }
     }
   }
+
+  /**
+   * Not implemented yet.
+   */
   def graphemeIterator: Iterator[Grapheme] = {
-    throw new NotImplementedError
+    // TODO: implement by CharacterIterator
+    // TODO: implement by myself
+    new Iterator[Grapheme] {
+      private[this] val str = readString
+
+      private[this] val breaker = IteratorText.DefaultGraphemeBreakIterator()
+      breaker.setText(str)
+
+      private[this] var start = breaker.first
+
+      private[this] var end = breaker.next
+
+      def hasNext: Boolean = {
+        end != BreakIterator.DONE
+      }
+
+      def next: Grapheme = {
+        val ret = new Grapheme(new StringText(str.substring(start, end)))
+        start = end
+        end = breaker.next
+        ret
+      }
+    }
   }
   def wordIterator: Iterator[Word] = {
     throw new NotImplementedError

@@ -21,8 +21,32 @@ trait IteratorText extends Iterator[Char] {
     builder ++= this
     builder.result
   }
+  /**
+   * Creates a iterator over all code points of the text produced by this
+   * iterator.
+   *
+   * @return A new iterator over all code points of the text produced by this
+   * iterator.
+   *
+   * @note The next method of this iterator, if the next 2 code units are a
+   * surrogate pair, consumes 2 code units and returns the code point that they
+   * consists. Otherwise it consumes 1 code unit and returns it as a code point.
+   *
+   * @note Reuse: After calling this method, one should discard the iterator it
+   * was called on, and use only the iterator that was returned. Using the old
+   * iterator is undefined, subject to change, and may result in changes to the
+   * new iterator as well.
+   */
   def codePointIterator: Iterator[Int] = {
-    throw new NotImplementedError
+    IteratorView[Char, Int, BufferedIterator[Char]](buffered) {
+      it =>
+        val high = it.next
+        if (hasNext && CodePoint.isSurrogatePair(high, it.head)) {
+          CodePoint(high, it.next)
+        } else {
+          high
+        }
+    }
   }
   def graphemeIterator: Iterator[Grapheme] = {
     throw new NotImplementedError

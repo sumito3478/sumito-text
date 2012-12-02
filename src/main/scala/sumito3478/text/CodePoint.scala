@@ -9,5 +9,8 @@ class CodePoint(val value: Int) extends AnyVal {
 }
 
 object CodePoint {
+  implicit def fromInt(value: Int): CodePoint = {
+    new CodePoint(value)
+  }
 
 }

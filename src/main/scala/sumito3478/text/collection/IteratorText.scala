@@ -77,6 +77,10 @@ trait IteratorText extends Iterator[Char] {
       }
     }
   }
+
+  /**
+   * Not implemented yet.
+   */
   def wordIterator: Iterator[Word] = {
     throw new NotImplementedError
   }

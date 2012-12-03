@@ -39,16 +39,16 @@ trait IteratorText extends Iterator[Char] {
    */
   def codePointIterator: Iterator[Int] = {
     val it = buffered
-    Iterator.continually[Int](
+    Iterator.continually[Option[Int]](
       if (it.hasNext) {
         it.next match {
           case high if it.hasNext && CodePoint.isSurrogatePair(high, it.head) =>
-            CodePoint(high, it.next)
-          case high => high
+            Some[Int](CodePoint(high, it.next))
+          case high => Some[Int](high)
         }
       } else {
-        -1
-      }).takeWhile(_ != -1)
+        None
+      }).takeWhile(_.isDefined).map(_.get)
   }
 
   /**

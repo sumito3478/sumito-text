@@ -14,20 +14,13 @@ trait IterableTextLike[+Repr] extends IterableLike[Char, Repr]
   def compare(other: IterableTextLike[Any]): Int = {
     val sit = codePointIterator
     val oit = other.codePointIterator
-    var ret = 0
-    while (ret == 0 && sit.hasNext && oit.hasNext) {
-      ret = sit.next - oit.next
-    }
-    if (ret > 0) {
-      1
-    } else if (ret < 0) {
-      -1
-    } else if (sit.hasNext) {
-      1
-    } else if (oit.hasNext) {
-      -1
-    } else {
-      0
+    Iterator.continually(sit.next - oit.next).dropWhile(
+        _ == 0 && sit.hasNext && oit.hasNext).next() match {
+      case d if d > 0 => 1
+      case d if d < 0 => -1
+      case _ if sit.hasNext => 1
+      case _ if oit.hasNext => -1
+      case _ => 0
     }
   }
 

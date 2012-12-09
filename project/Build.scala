@@ -22,7 +22,7 @@ object Build extends Build {
         ),
       publishMavenStyle := true,
       publishTo := Some(Resolver.sftp(
-        "sumito3478 Maven Repository",
+        "sumito3478 Maven Repository (push)",
         "maven.sumito3478.info",
         46877,
         "/var/www/maven.sumito3478.info") as (
@@ -32,7 +32,7 @@ object Build extends Build {
           ".ssh/sumito3478-sshkey"))),
       resolvers := Seq(
         "Maven Repository Mirror" at "http://uk.maven.org/maven2",
-        "sumito3478 Maven Repository" at "http://maven.sumito3478.info/"),
+        "sumito3478 Maven Repository (pull)" at "http://maven.sumito3478.info/"),
       externalResolvers <<= resolvers map {
         rs =>
           Resolver.withDefaultResolvers(rs, mavenCentral = false)

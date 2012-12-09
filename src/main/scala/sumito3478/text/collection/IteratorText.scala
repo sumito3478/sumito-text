@@ -6,8 +6,8 @@ import com.ibm.icu.text.BreakIterator
 import com.ibm.icu.util.ULocale
 
 import IteratorText.DefaultGraphemeBreakIterator
-import sumito3478.collection.IteratorView
-import sumito3478.collection.immutable.ThreadLocal
+
+import sumito3478.collection.ThreadLocal
 import sumito3478.text.CodePoint
 import sumito3478.text.Grapheme
 import sumito3478.text.Line

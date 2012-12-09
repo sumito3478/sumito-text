@@ -36,8 +36,8 @@ trait RichBreakIterator {
   }
 
   def mapIterator(source: Iterator[Char]): Iterator[StringText] = {
-    import sumito3478.collection.Riches._
-    val aheadText = source.infinitBuffered
+    import sumito3478.collection.RichIterator
+    val aheadText = source.lookAhead
     val queue = new Queue[StringText]
     scala.collection.Iterator.continually[Option[StringText]](
       if (queue.isEmpty && aheadText.hasNext) {

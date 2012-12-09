@@ -2,7 +2,7 @@ import sbt._
 import Keys._
 import com.twitter.sbt._
 
-object SumitoTextBuild extends Build {
+object Build extends Build {
 
   lazy val sumitoText = Project(
     id = "sumito-text",

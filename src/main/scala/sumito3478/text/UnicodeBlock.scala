@@ -430,5 +430,8 @@ object UnicodeBlock {
   case class CjkUnifiedIdeographsExtensionD private[UnicodeBlock] (val codePoint: CodePoint, val intern: Character.UnicodeBlock) extends UnicodeBlock
 }
 
-abstract class UnicodeBlock
+abstract class UnicodeBlock {
+  val codePoint: CodePoint
+  protected[this] val intern: Character.UnicodeBlock
+}
 

@@ -40,39 +40,21 @@ trait IterableTextLike[+Repr] extends IterableLike[Char, Repr]
     iteratorText.codePointIterator
   }
 
-  /**
-   * Not implemented yet.
-   */
   def graphemeIterator: Iterator[Grapheme] = {
     iteratorText.graphemeIterator
   }
 
-  /**
-   * Not implemented yet.
-   */
   def wordIterator: Iterator[Word] = {
     iteratorText.wordIterator
   }
 
-  /**
-   * Not implemented yet.
-   */
   def lineIterator: Iterator[Line] = {
     iteratorText.lineIterator
   }
 
-  /**
-   * Not implemented yet.
-   */
   def sentenceIterator: Iterator[Sentence] = {
     iteratorText.sentenceIterator
   }
-
-  //  def toUpperCase: Repr = {
-  //    val builder = newBuilder
-  //    
-  //    builder.result
-  //  }
   /**
    * Converts all of the characters in this text to upper case using the default
    * rule.

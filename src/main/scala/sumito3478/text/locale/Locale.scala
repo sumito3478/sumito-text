@@ -18,7 +18,7 @@ trait Locale {
 }
 
 object Locale {
-  def neutral: Locale = {
+  lazy val neutral: Locale = {
     /* TODO: implement by myself */
     new ICULocale(ULocale.ENGLISH)
   }

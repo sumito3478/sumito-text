@@ -15,13 +15,13 @@ trait IterableTextLike[+Repr] extends IterableLike[Char, Repr]
     val sit = codePointIterator
     val oit = other.codePointIterator
     Iterator.continually(sit.next - oit.next).dropWhile(
-        _ == 0 && sit.hasNext && oit.hasNext).next() match {
-      case d if d > 0 => 1
-      case d if d < 0 => -1
-      case _ if sit.hasNext => 1
-      case _ if oit.hasNext => -1
-      case _ => 0
-    }
+      _ == 0 && sit.hasNext && oit.hasNext).next() match {
+        case d if d > 0 => 1
+        case d if d < 0 => -1
+        case _ if sit.hasNext => 1
+        case _ if oit.hasNext => -1
+        case _ => 0
+      }
   }
 
   def iteratorText: IteratorText = {

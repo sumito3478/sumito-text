@@ -1,5 +1,7 @@
 package sumito3478.text
 
+import sumito3478.AnyHashCodeBuilder
+
 object UnicodeBlock {
   def apply(codePoint: CodePoint): UnicodeBlock = {
     import Character.UnicodeBlock._
@@ -432,6 +434,16 @@ object UnicodeBlock {
 
 abstract class UnicodeBlock {
   val codePoint: CodePoint
-  protected[this] val intern: Character.UnicodeBlock
+
+  protected val intern: Character.UnicodeBlock
+
+  override def equals(that: Any): Boolean = that match {
+    case that: this.type => codePoint == that.codePoint && intern == that.intern
+    case _ => false
+  }
+
+  override def hashCode: Int = {
+    (new AnyHashCodeBuilder ++= (codePoint, intern.hashCode)).result
+  }
 }
 

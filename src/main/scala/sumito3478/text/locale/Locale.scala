@@ -5,6 +5,7 @@ import sumito3478.text.CodePoint
 import sumito3478.text.Line
 import sumito3478.text.Word
 import sumito3478.text.Sentence
+import com.ibm.icu.util.ULocale
 
 trait Locale {
   def mapToGraphemes(text: Iterator[Char]): Iterator[Grapheme]
@@ -18,6 +19,7 @@ trait Locale {
 
 object Locale {
   def neutral: Locale = {
-    throw new NotImplementedError
+    /* TODO: implement by myself */
+    new ICULocale(ULocale.ENGLISH)
   }
 }

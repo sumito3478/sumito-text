@@ -49,32 +49,20 @@ trait IteratorText extends Iterator[Char] {
       }).takeWhile(_.isDefined).map(_.get)
   }
 
-  /**
-   * Not implemented yet.
-   */
   def graphemeIterator: Iterator[Grapheme] = {
     Locale.neutral.mapToGraphemes(this)
   }
 
-  /**
-   * Not implemented yet.
-   */
   def wordIterator: Iterator[Word] = {
-    throw new NotImplementedError
+    Locale.neutral.mapToWords(this)
   }
 
-  /**
-   * Not implemented yet.
-   */
   def lineIterator: Iterator[Line] = {
-    throw new NotImplementedError
+    Locale.neutral.mapToLines(this)
   }
 
-  /**
-   * Not implemented yet.
-   */
   def sentenceIterator: Iterator[Sentence] = {
-    throw new NotImplementedError
+    Locale.neutral.mapToSentences(this)
   }
 }
 

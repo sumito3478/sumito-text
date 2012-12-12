@@ -43,7 +43,7 @@ object Build extends Build {
         "org.mockito" % "mockito-core" % "1.9.5" % "test",
         "junit" % "junit" % "4.11" % "test",
         "com.ibm.icu" % "icu4j" % "50.1",
-        "sumito-base" %% "sumito-base" % "0.0.3"
+        "sumito-base" %% "sumito-base" % "0.0.8"
       )
     ): _*
   )

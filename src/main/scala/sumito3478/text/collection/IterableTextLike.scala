@@ -15,13 +15,13 @@ trait IterableTextLike[+Repr] extends IterableLike[Char, Repr]
     val sit = codePointIterator
     val oit = other.codePointIterator
     Iterator.continually(sit.next - oit.next).dropWhile(
-        _ == 0 && sit.hasNext && oit.hasNext).next() match {
-      case d if d > 0 => 1
-      case d if d < 0 => -1
-      case _ if sit.hasNext => 1
-      case _ if oit.hasNext => -1
-      case _ => 0
-    }
+      _ == 0 && sit.hasNext && oit.hasNext).next() match {
+        case d if d > 0 => 1
+        case d if d < 0 => -1
+        case _ if sit.hasNext => 1
+        case _ if oit.hasNext => -1
+        case _ => 0
+      }
   }
 
   def iteratorText: IteratorText = {
@@ -40,39 +40,21 @@ trait IterableTextLike[+Repr] extends IterableLike[Char, Repr]
     iteratorText.codePointIterator
   }
 
-  /**
-   * Not implemented yet.
-   */
   def graphemeIterator: Iterator[Grapheme] = {
     iteratorText.graphemeIterator
   }
 
-  /**
-   * Not implemented yet.
-   */
   def wordIterator: Iterator[Word] = {
     iteratorText.wordIterator
   }
 
-  /**
-   * Not implemented yet.
-   */
   def lineIterator: Iterator[Line] = {
     iteratorText.lineIterator
   }
 
-  /**
-   * Not implemented yet.
-   */
   def sentenceIterator: Iterator[Sentence] = {
     iteratorText.sentenceIterator
   }
-
-  //  def toUpperCase: Repr = {
-  //    val builder = newBuilder
-  //    
-  //    builder.result
-  //  }
   /**
    * Converts all of the characters in this text to upper case using the default
    * rule.

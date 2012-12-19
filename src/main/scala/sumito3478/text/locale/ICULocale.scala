@@ -20,14 +20,17 @@ class ICULocale(val intern: ULocale) extends Locale {
   }
 
   def mapToWords(text: Iterator[Char]): Iterator[Word] = {
-    throw new NotImplementedError
+    BreakIterator.getWordInstance(
+      intern).mapIterator(text).map(new Word(_))
   }
 
   def mapToLines(text: Iterator[Char]): Iterator[Line] = {
-    throw new NotImplementedError
+    BreakIterator.getLineInstance(
+      intern).mapIterator(text).map(new Line(_))
   }
 
   def mapToSentences(text: Iterator[Char]): Iterator[Sentence] = {
-    throw new NotImplementedError
+    BreakIterator.getSentenceInstance(
+      intern).mapIterator(text).map(new Sentence(_))
   }
 }

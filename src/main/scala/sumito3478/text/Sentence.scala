@@ -1,5 +1,7 @@
 package sumito3478.text
 
-class Sentence {
+import sumito3478.text.collection.IterableTextLike
+
+class Sentence(val text: IterableTextLike[Any]){
 
 }

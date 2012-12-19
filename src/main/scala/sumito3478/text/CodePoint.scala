@@ -13,7 +13,7 @@ class CodePoint(val intern: Int) extends AnyVal {
     Ops.digit(intern, radix)
   }
 
-  override def toString: String = {
+  def name: String = {
     Ops.getName(intern)
   }
 

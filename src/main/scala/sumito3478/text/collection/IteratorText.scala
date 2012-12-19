@@ -1,12 +1,9 @@
 package sumito3478.text.collection
 
 import scala.collection.Iterator
-
 import com.ibm.icu.text.BreakIterator
 import com.ibm.icu.util.ULocale
-
 import IteratorText.DefaultGraphemeBreakIterator
-
 import sumito3478.collection.ThreadLocal
 import sumito3478.text.CodePoint
 import sumito3478.text.Grapheme
@@ -14,6 +11,7 @@ import sumito3478.text.Line
 import sumito3478.text.Sentence
 import sumito3478.text.Word
 import sumito3478.text.collection.immutable.StringText
+import sumito3478.text.locale.Locale
 
 trait IteratorText extends Iterator[Char] {
   def readString: String = {
@@ -51,54 +49,20 @@ trait IteratorText extends Iterator[Char] {
       }).takeWhile(_.isDefined).map(_.get)
   }
 
-  /**
-   * Not implemented yet.
-   */
   def graphemeIterator: Iterator[Grapheme] = {
-    // TODO: implement by CharacterIterator
-    // TODO: implement by myself
-    new Iterator[Grapheme] {
-      private[this] val str = readString
-
-      private[this] val breaker = IteratorText.DefaultGraphemeBreakIterator()
-      breaker.setText(str)
-
-      private[this] var start = breaker.first
-
-      private[this] var end = breaker.next
-
-      def hasNext: Boolean = {
-        end != BreakIterator.DONE
-      }
-
-      def next: Grapheme = {
-        val ret = new Grapheme(new StringText(str.substring(start, end)))
-        start = end
-        end = breaker.next
-        ret
-      }
-    }
+    Locale.neutral.mapToGraphemes(this)
   }
 
-  /**
-   * Not implemented yet.
-   */
   def wordIterator: Iterator[Word] = {
-    throw new NotImplementedError
+    Locale.neutral.mapToWords(this)
   }
 
-  /**
-   * Not implemented yet.
-   */
   def lineIterator: Iterator[Line] = {
-    throw new NotImplementedError
+    Locale.neutral.mapToLines(this)
   }
 
-  /**
-   * Not implemented yet.
-   */
   def sentenceIterator: Iterator[Sentence] = {
-    throw new NotImplementedError
+    Locale.neutral.mapToSentences(this)
   }
 }
 
